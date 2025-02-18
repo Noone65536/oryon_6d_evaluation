@@ -1,0 +1,15 @@
+data/
+exp_data/
+__*
+*.pyc
+bop*
+build*
+bop_toolkit_lib/
+outputs/
+*.zip
+/raw_data
+/pretrained_models
+/shapenetSem
+__*/
+models/pointdsc/__pycache__/common.cpython-38.pyc
+models/pointdsc/__pycache__/PointDSC.cpython-38.pyc

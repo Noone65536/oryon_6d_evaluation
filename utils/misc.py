@@ -388,11 +388,11 @@ def init_storage_folders(args, creation_wait_timeout):
     print("Logs folder: {}".format(logs_output_folder))
     print("Results folder: {}".format(results_output_folder))
         
-    makedirs(checkpoints_output_folder, exist_ok=False)
-    makedirs(logs_output_folder, exist_ok=False)
-    makedirs(results_output_folder, exist_ok=False)
-    makedirs(join(results_output_folder,'pcds'), exist_ok=False)
-    makedirs(join(results_output_folder,'viz'), exist_ok=False)
+    makedirs(checkpoints_output_folder, exist_ok=True)
+    makedirs(logs_output_folder, exist_ok=True)
+    makedirs(results_output_folder, exist_ok=True)
+    makedirs(join(results_output_folder,'pcds'), exist_ok=True)
+    makedirs(join(results_output_folder,'viz'), exist_ok=True)
     subprocess.call('touch {}/__init__.py'.format(join(args.exp_root, args.exp_name)), shell=True)
 
     start_wait_time = datetime.now()
