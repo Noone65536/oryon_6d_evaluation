@@ -5,6 +5,7 @@ use_seed : False
 seed : 1
 device : cuda
 corrs_device: cpu
+model_name : oryon
 
 compute_vsd: True
 viz_valid : False
@@ -14,7 +15,7 @@ resume_ckpt: none
 
 dataset:
   root : data
-  batch_size : 32
+  batch_size : 24
   img_size : [224,224]
   max_corrs: 500
 

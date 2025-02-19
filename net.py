@@ -150,8 +150,8 @@ class Oryon(torch.nn.Module):
         guid_q = self.get_guidance_embeds(xs['query']['rgb'])        
 
         # get encoded feature maps [D,N,N]
-        prompt_emb = prompt_emb.unsqueeze(1)
-        feats_a = self.fusion.forward(visual_a, prompt_emb, guid_a)
+        prompt_emb = prompt_emb.unsqueeze(1) # [24,1,80,768]
+        feats_a = self.fusion.forward(visual_a, prompt_emb, guid_a) # [B, 1024, 24, 24]
         feats_q = self.fusion.forward(visual_q, prompt_emb, guid_q)
 
         mask_a, featmap_a = self.decoder.forward(feats_a, guid_a)

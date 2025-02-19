@@ -19,6 +19,7 @@ from utils import viz, coordinates
 from utils.pointdsc.init import get_pointdsc_pose, get_pointdsc_solver
 from utils.pcd import nn_correspondences
 from utils.evaluator import Evaluator
+from net_ours  import Oryon_ours,Oryon_ours_encoder
 import numpy as np
 
 class FPM_Pipeline(LightningModule):
@@ -65,17 +66,21 @@ class FPM_Pipeline(LightningModule):
         wb_logger = WandbLogger(
             save_dir=args.tmp.logs_out,
             project='Oryon-tpami',
-            name=args.exp_name,
-            offline=True
+            name=args.exp_name
         )
 
         self.wb_logger = wb_logger
 
         return [wb_logger]
 
-    def get_model(self) -> Oryon: 
-    
-        return Oryon(self.args, self.args.device)
+    def get_model(self): 
+        
+        if self.args.model_name == 'oryon':
+            return Oryon(self.args, self.args.device)
+        elif self.args.model_name == 'ours':
+            return Oryon_ours(self.args, self.args.device)
+        elif self.args.model_name == 'ours_encoder':
+            return Oryon_ours_encoder(self.args, self.args.device)
     
     def get_loss(self) -> torch.nn.Module:
                 
@@ -509,7 +514,7 @@ class FPM_Pipeline(LightningModule):
             batch_size=args.dataset.batch_size,
             collate_fn=train_set.collate,
             shuffle=True,
-            num_workers=8
+            num_workers=4
         )
         
         return train_loader
@@ -525,7 +530,7 @@ class FPM_Pipeline(LightningModule):
             batch_size=args.dataset.batch_size,
             collate_fn=valid_set.collate,
             shuffle=False,
-            num_workers=8
+            num_workers=2
         )
 
         return valid_loader
@@ -542,7 +547,7 @@ class FPM_Pipeline(LightningModule):
             batch_size=args.dataset.batch_size,
             collate_fn=test_set.collate,
             shuffle=False,
-            num_workers=8
+            num_workers=2
         )
 
         return test_loader

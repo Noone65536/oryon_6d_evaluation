@@ -8,6 +8,16 @@ from os.path import join, exists
 from pipeline import FPM_Pipeline
 from pytorch_lightning.profilers import SimpleProfiler, AdvancedProfiler
 
+# sudo pkill -9 -f run_train.py
+
+import warnings
+warnings.filterwarnings(
+    "ignore",
+    message="The default value of the antialias parameter of all the resizing transforms.*",
+    category=UserWarning
+)
+
+
 def get_ckpt_path(args):
     '''
     Get checkpoint path from folder of previous experiment
@@ -57,7 +67,7 @@ def run_pipeline(args : DictConfig) -> None:
     else:
         profiler = None
 
-    strategy = 'ddp_find_unused_parameters_false'  
+    strategy = 'ddp_find_unused_parameters_true'  
 
     trainer = Trainer(
         logger = system.get_logger(),
@@ -68,7 +78,7 @@ def run_pipeline(args : DictConfig) -> None:
         accelerator=args.device,
         strategy=strategy,
         log_every_n_steps=10,
-        devices='auto',
+        devices=2,
         num_nodes=1,
         detect_anomaly=False,
         check_val_every_n_epoch=args.training.freq_valid,

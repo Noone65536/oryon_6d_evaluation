@@ -1,0 +1,32 @@
+wandb:                             epoch 3
+wandb:                   train_loss/mask 0.33611
+wandb:                    train_loss/neg 0.40566
+wandb:                    train_loss/pos 0.00547
+wandb:                  train_loss/total 0.74724
+wandb:           train_metric/Anchor IoU 0.15547
+wandb:            train_metric/IoU > .25 0.23526
+wandb:             train_metric/IoU > .5 0.05041
+wandb:            train_metric/IoU > .75 0.00689
+wandb:             train_metric/Mean IoU 0.15498
+wandb:            train_metric/Query IoU 0.1545
+wandb:               trainer/global_step 3335
+wandb:                   valid_loss/mask 0.35492
+wandb:                    valid_loss/neg 0.41134
+wandb:                    valid_loss/pos 0.0042
+wandb:                  valid_loss/total 0.77046
+wandb:          valid_metric/ADD(S)-0.1d 0.00645
+wandb:                   valid_metric/AR 0.06357
+wandb:           valid_metric/Anchor IoU 0.08881
+wandb:            valid_metric/IoU > .25 0.13938
+wandb:             valid_metric/IoU > .5 0.07341
+wandb:            valid_metric/IoU > .75 0.00099
+wandb:                 valid_metric/MSPD 0.11215
+wandb:                 valid_metric/MSSD 0.06151
+wandb:             valid_metric/Mean IoU 0.09151
+wandb:            valid_metric/Query IoU 0.09437
+wandb:              valid_metric/R error 104.21002
+wandb: valid_metric/Recall (10deg, 20cm) 0.00198
+wandb: valid_metric/Recall (15deg, 30cm) 0.00744
+wandb:  valid_metric/Recall (5deg, 10cm) 0.0005
+wandb:              valid_metric/T error 46.549
+wandb:                  valid_metric/VSD 0.01705
